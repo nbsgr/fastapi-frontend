@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #1c1c1c, #0f0f0f);
+  color: #eaeaea;
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+/* PAGE */
+.chatgpt-otp-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.chatgpt-otp-card {
+  width: 340px;
+  background: linear-gradient(180deg, #1f1f1f, #161616);
+  padding: 28px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+}
+
+/* TITLE */
+.chatgpt-otp-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* INPUT */
+.chatgpt-otp-input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #2b2b2b;
+  color: white;
+  font-size: 15px;
+}
+
+.chatgpt-otp-input::placeholder {
+  color: #9a9a9a;
+}
+
+/* BUTTON */
+.chatgpt-otp-button {
+  margin-top: 4px;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.chatgpt-otp-button:hover {
+  background: #eaeaea;
+}
+
+/* ERROR */
+.chatgpt-otp-error {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 14px;
+}

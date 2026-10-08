@@ -1,0 +1,547 @@
+/* ===================================================== */
+/* ROOT */
+/* ===================================================== */
+
+.cgpt-chatspace-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #0d0d0d;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===================================================== */
+/* CHAT AREA */
+/* ===================================================== */
+
+.cgpt-chatspace-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 24px 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-behavior: smooth;
+}
+
+/* ===================================================== */
+/* SCROLLBAR */
+/* ===================================================== */
+
+.cgpt-chatspace-area::-webkit-scrollbar,
+.cgpt-thinking-content::-webkit-scrollbar,
+.cgpt-code-block::-webkit-scrollbar,
+.cgpt-chatspace-input::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.cgpt-chatspace-area::-webkit-scrollbar-thumb,
+.cgpt-thinking-content::-webkit-scrollbar-thumb,
+.cgpt-code-block::-webkit-scrollbar-thumb,
+.cgpt-chatspace-input::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.14);
+  border-radius: 999px;
+}
+
+.cgpt-chatspace-area::-webkit-scrollbar-thumb:hover,
+.cgpt-thinking-content::-webkit-scrollbar-thumb:hover,
+.cgpt-code-block::-webkit-scrollbar-thumb:hover,
+.cgpt-chatspace-input::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.24);
+}
+
+/* ===================================================== */
+/* MESSAGE */
+/* ===================================================== */
+
+.cgpt-chatspace-message {
+  max-width: 760px;
+  width: fit-content;
+  padding: 16px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  animation: fadeIn 0.2s ease;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.cgpt-chatspace-message:hover {
+  transform: translateY(-1px);
+}
+
+/* ===================================================== */
+/* USER */
+/* ===================================================== */
+
+.cgpt-chatspace-user {
+  align-self: flex-end;
+  background: #2b2b2b;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* ===================================================== */
+/* BOT */
+/* ===================================================== */
+
+.cgpt-chatspace-bot {
+  align-self: flex-start;
+  background: #171717;
+  color: #f4f4f4;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.28);
+  width: 100%;
+  max-width: 760px;
+}
+
+/* ===================================================== */
+/* THINKING DROPDOWN */
+/* ===================================================== */
+
+.cgpt-thinking-dropdown {
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #141414;
+  border: 1px solid #252525;
+}
+
+.cgpt-thinking-dropdown summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  background: #1b1b1b;
+  transition: background 0.18s ease;
+}
+
+.cgpt-thinking-dropdown summary:hover {
+  background: #212121;
+}
+
+.cgpt-thinking-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.cgpt-thinking-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f2f2f2;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cgpt-thinking-content {
+  border-top: 1px solid #242424;
+  padding: 18px;
+  background: #111111;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+/* ===================================================== */
+/* THINKING STREAM */
+/* ===================================================== */
+
+.cgpt-thinking-stream {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #242424;
+  color: #c7d0dd;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* ===================================================== */
+/* STAGES */
+/* ===================================================== */
+
+.cgpt-stage-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cgpt-stage-number {
+  color: #8ab4ff;
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 72px;
+}
+
+.cgpt-stage-name {
+  color: #e3e3e3;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.cgpt-stage-status {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #242424;
+  color: #9ea7b3;
+  font-size: 13px;
+  line-height: 1.7;
+  animation: pulseOpacity 1.5s infinite;
+}
+
+/* ===================================================== */
+/* MAIN ANSWER */
+/* ===================================================== */
+
+.cgpt-main-answer {
+  width: 100%;
+  color: #f4f4f4;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+/* ===================================================== */
+/* INPUT */
+/* ===================================================== */
+
+.cgpt-chatspace-input-container {
+  position: sticky;
+  bottom: 0;
+  padding: 18px 22px 24px;
+  background: linear-gradient(to top, #0d0d0d 72%, transparent);
+  backdrop-filter: blur(12px);
+  z-index: 20;
+}
+
+.cgpt-chatspace-input-wrapper {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 26px;
+  padding: 12px 14px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.cgpt-chatspace-input-wrapper:focus-within {
+  border-color: #3a3a3a;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.cgpt-chatspace-input {
+  flex: 1;
+  resize: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 24px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-family: inherit;
+}
+
+.cgpt-chatspace-input::placeholder {
+  color: #777;
+}
+
+/* ===================================================== */
+/* SEND BUTTON */
+/* ===================================================== */
+
+.cgpt-chatspace-send-btn {
+  border: none;
+  background: white;
+  color: black;
+  border-radius: 14px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+}
+
+.cgpt-chatspace-send-btn:hover {
+  transform: scale(1.05);
+  background: #f1f1f1;
+}
+
+.cgpt-chatspace-send-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===================================================== */
+/* THINKING LOADER */
+/* ===================================================== */
+
+.thinking {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 80px;
+  padding: 14px 18px;
+}
+
+.thinking .dot {
+  width: 7px;
+  height: 7px;
+  background: #aaa;
+  border-radius: 50%;
+  animation: thinkingBlink 1.4s infinite both;
+}
+
+.thinking .dot:nth-child(1) { animation-delay: 0s; }
+.thinking .dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes thinkingBlink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* ===================================================== */
+/* SOURCES */
+/* ===================================================== */
+
+.cgpt-message-sources {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.cgpt-source-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.cgpt-source-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.cgpt-source-item a {
+  color: #8ab4ff;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.cgpt-source-item a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================== */
+/* STREAM CURSOR */
+/* ===================================================== */
+
+.cgpt-stream-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #ffffff;
+  animation: blinkCursor 1s infinite;
+}
+
+@keyframes blinkCursor {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ===================================================== */
+/* ANIMATIONS */
+/* ===================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseOpacity {
+  0% { opacity: 0.55; }
+  50% { opacity: 1; }
+  100% { opacity: 0.55; }
+}
+
+/* ===================================================== */
+/* MOBILE */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+  .cgpt-chatspace-area {
+    padding: 18px 12px 140px;
+  }
+  .cgpt-chatspace-message {
+    max-width: 95%;
+  }
+  .cgpt-chatspace-bot {
+    max-width: 100%;
+  }
+  .cgpt-chatspace-input-container {
+    padding: 14px 12px 20px;
+  }
+  .cgpt-thinking-content {
+    max-height: 240px;
+  }
+  .cgpt-chatspace-input {
+    font-size: 14px;
+  }
+  .cgpt-main-answer {
+    font-size: 14px;
+  }
+}
+
+/* ===================================================== */
+/* ADVANCED MARKDOWN STYLING (UPGRADED)                  */
+/* ===================================================== */
+
+.cgpt-paragraph {
+  margin: 12px 0;
+  line-height: 1.95;
+}
+
+/* Lists */
+.cgpt-list,
+.cgpt-main-answer ul, 
+.cgpt-main-answer ol {
+  padding-left: 24px;
+  margin: 12px 0;
+  line-height: 1.9;
+}
+
+.cgpt-main-answer li {
+  margin-bottom: 6px;
+}
+
+/* Headers */
+.cgpt-main-answer h1, 
+.cgpt-main-answer h2, 
+.cgpt-main-answer h3, 
+.cgpt-main-answer h4 {
+  color: #ffffff;
+  margin-top: 1.4em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cgpt-main-answer h1 { font-size: 1.5em; border-bottom: 1px solid #333; padding-bottom: 6px; }
+.cgpt-main-answer h2 { font-size: 1.3em; }
+.cgpt-main-answer h3 { font-size: 1.1em; }
+
+/* Blockquotes */
+.cgpt-main-answer blockquote {
+  border-left: 4px solid #444;
+  background: rgba(255, 255, 255, 0.03);
+  margin: 16px 0;
+  padding: 12px 16px;
+  color: #bbb;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+/* Tables */
+.cgpt-main-answer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.cgpt-main-answer th, 
+.cgpt-main-answer td {
+  border: 1px solid #333;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.cgpt-main-answer th {
+  background: #1f1f1f;
+  font-weight: 600;
+  color: #eee;
+}
+
+.cgpt-main-answer tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Inline Code */
+.cgpt-inline-code,
+.cgpt-main-answer p code,
+.cgpt-main-answer li code {
+  background: #282a36;
+  color: #ffb86c;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: Consolas, "JetBrains Mono", monospace;
+  border: 1px solid #3a3a3a;
+}
+
+/* Standard Code Blocks */
+.cgpt-code-wrapper {
+  margin: 16px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #333;
+  background: #0b0b0b;
+}
+
+.cgpt-code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #161616;
+  border-bottom: 1px solid #333;
+  font-size: 12px;
+  color: #aaa;
+  font-family: sans-serif;
+}
+
+.cgpt-code-copy {
+  background: transparent;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+  transition: color 0.18s ease;
+  font-size: 12px;
+}
+
+.cgpt-code-copy:hover {
+  color: white;
+}
+
+.cgpt-code-block,
+.cgpt-main-answer pre {
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  margin: 0;
+}
+
+.cgpt-main-answer pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border: none;
+}

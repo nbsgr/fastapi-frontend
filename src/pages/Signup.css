@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #1c1c1c, #0f0f0f);
+  color: #eaeaea;
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+/* PAGE */
+.chatgpt-signup-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.chatgpt-signup-card {
+  width: 360px;
+  background: linear-gradient(180deg, #1f1f1f, #161616);
+  padding: 28px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+}
+
+/* TITLE */
+.chatgpt-signup-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* INPUTS */
+.chatgpt-signup-input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #2b2b2b;
+  color: white;
+  font-size: 15px;
+}
+
+.chatgpt-signup-input::placeholder {
+  color: #9a9a9a;
+}
+
+/* BUTTON */
+.chatgpt-signup-button {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chatgpt-signup-button:hover {
+  background: #eaeaea;
+}
+
+.chatgpt-signup-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ERROR */
+.chatgpt-signup-error {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 6px;
+}

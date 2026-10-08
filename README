@@ -1,0 +1,201 @@
+# 🤖 AI Chatbot Web App
+
+A full-stack AI-powered chatbot application built using **React (Vite)** and **Spring Boot**, featuring authentication, protected routes, and real-time interaction.
+
+---
+
+## 🚀 Live Demo
+
+🌐 Frontend: https://chatbot-frontend-green-phi.vercel.app/
+
+---
+
+## 📌 Features
+
+* 🔐 User Authentication (Login / Signup)
+* 📧 OTP Verification
+* 🔑 Forgot & Reset Password
+* 🧠 AI Chat Interface
+* 📊 Protected Dashboard
+* 🌍 Deployed Frontend (Vercel)
+* 🖥️ Desktop App (via Nativefier)
+* 📱 Mobile-ready (Capacitor / PWA ready)
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React (Vite)
+* React Router
+* CSS
+
+### Backend
+
+* Spring Boot
+* JWT Authentication
+* REST APIs
+
+### Deployment
+
+* Vercel (Frontend)
+* (Backend deployment pending / configurable)
+
+### Desktop
+
+* Electron (via Nativefier)
+
+---
+
+## 📂 Project Structure
+
+```
+aibot/
+├── src/
+│   ├── pages/
+│   ├── components/
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+├── dist/
+├── vercel.json
+├── vite.config.js
+└── package.json
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/your-username/chatbot-frontend.git
+cd chatbot-frontend
+```
+
+---
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3️⃣ Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+### 4️⃣ Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 🌐 Deployment (Vercel)
+
+This project is deployed using **Vercel**.
+
+### Important Config (`vercel.json`)
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+👉 Required for React Router (SPA routing fix)
+
+---
+
+## 🖥️ Desktop App (Nativefier)
+
+Convert deployed app into desktop app:
+
+```bash
+nativefier https://chatbot-frontend-green-phi.vercel.app \
+  --name "AI Bot" \
+  --icon icon.ico
+```
+
+---
+
+## 📱 Mobile App (Optional)
+
+### Option 1: PWA
+
+* Add to Home Screen (no install needed)
+
+### Option 2: Capacitor
+
+```bash
+npm install @capacitor/core @capacitor/cli
+npx cap init
+npm run build
+npx cap add android
+npx cap open android
+```
+
+---
+
+## 🔐 Authentication Flow
+
+* User Signup → OTP Verification
+* Login → JWT Token stored
+* Protected Routes using `ProtectedRoute`
+* Dashboard accessible only after login
+
+---
+
+## ⚠️ Known Issues
+
+* Backend must be deployed for full functionality
+* CORS must include deployed frontend URL
+
+---
+
+## 🧠 Learnings
+
+* SPA routing issues in production (Vercel)
+* CORS configuration in Spring Boot
+* Desktop app packaging using Electron
+* Deployment workflows (Git → Vercel)
+
+---
+
+## 🚀 Future Improvements
+
+* Deploy backend (Render / Railway)
+* Add real-time chat (WebSockets)
+* Improve UI/UX
+* Add dark mode
+* Mobile optimization
+
+---
+
+## 👨‍💻 Author
+
+**Balu**
+B.Tech Student | Full Stack Developer
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub and share it!
+
+---

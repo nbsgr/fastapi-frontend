@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: radial-gradient(circle at top, #1c1c1c, #0f0f0f);
+  color: #eaeaea;
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+/* PAGE */
+.chatgpt-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.chatgpt-header {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LEFT */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bot-logo {
+  height: 26px;
+}
+
+.bot-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #f2f2f2;
+}
+
+/* RIGHT */
+.header-right {
+  display: flex;
+  gap: 12px;
+}
+
+.login-pill {
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.signup-pill {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid #444;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* CENTER */
+.chatgpt-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.chatgpt-center h1 {
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+/* INPUT BOX */
+.chatgpt-input-box {
+  width: 62%;
+  max-width: 720px;
+  background: linear-gradient(180deg, #222, #1a1a1a);
+  padding: 16px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.chatgpt-input-box input {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  background: #2b2b2b;
+  color: white;
+  font-size: 16px;
+}
+
+.chatgpt-input-box input::placeholder {
+  color: #9a9a9a;
+}
+
+/* ACTIONS */
+.chatgpt-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#simg{
+    height: 39px;
+    margin-left: 5px;
+}
+.chatgpt-actions button {
+  background: #2b2b2b;
+  color: #e0e0e0;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chatgpt-actions button:hover {
+  background: #3a3a3a;
+}
+
+.voice {
+  margin-left: auto;
+}
+
+/* FOOTER */
+.chatgpt-footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9a9a9a;
+  font-size: 13px;
+}

@@ -1,0 +1,87 @@
+/* MarkdownRenderer.css */
+
+/* Ensure the entire renderer is a block-level container */
+.markdown-container {
+  display: block;
+  width: 100%;
+}
+
+/* Paragraphs must be block-level to contain nested divs/code blocks safely */
+.cgpt-paragraph {
+  display: block;
+  margin: 12px 0;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* List styling */
+.cgpt-list {
+  padding-left: 24px;
+  margin: 10px 0;
+  color: #e0e0e0;
+}
+
+/* Inline code formatting */
+.cgpt-inline-code {
+  background: #333;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+  color: #ffcc00;
+}
+
+/* Code block container */
+.cgpt-code-wrapper {
+  display: block;
+  margin: 16px 0;
+  border-radius: 6px;
+  background: #0d0d0d;
+  border: 1px solid #444;
+  overflow: hidden;
+}
+
+/* Code block header (Language + Copy button) */
+.cgpt-code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.cgpt-code-copy {
+  background: #333;
+  border: none;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.cgpt-code-copy:hover {
+  background: #444;
+}
+
+/* Code block body */
+.cgpt-code-block {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 14px;
+  background: #0d0d0d;
+  color: #d4d4d4;
+  white-space: pre;   /* Preserves indentation */
+  tab-size: 4;        /* Tab readability */
+}
+
+/* Ensure inner code tag fills the block */
+.cgpt-code-block code {
+  display: block;
+}
