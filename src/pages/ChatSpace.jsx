@@ -277,12 +277,20 @@ export default function ChatSpace(props) {
           };
         }
 
-        const formatted = res.data.map(formatMessage);
+        function compareMessages(a, b) {
+          const idA = a.id || 0;
+          const idB = b.id || 0;
+          return idA - idB;
+        }
+
+        const sortedList = res.data.slice().sort(compareMessages);
+        const formatted = sortedList.map(formatMessage);
         setMessages(formatted);
         activeStreamingIndexRef.current = null;
         setIsStreaming(false);
         setIsThinking(false);
         setTimeout(scrollToBottom, 0);
+
       }
     }
 
