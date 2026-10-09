@@ -1,5 +1,5 @@
-export const BASE_URL = "https://vndvnp1k-8000.inc1.devtunnels.ms";
-export const WS_URL = "wss://vndvnp1k-8000.inc1.devtunnels.ms";
+export const BASE_URL = "https://fastapi-backend-liard.vercel.app";
+export const WS_URL = "wss://fastapi-backend-liard.vercel.app";
 
 // Generic API caller
 export function callApi(reqmethod, url, data, responseHandler, token = null) {
