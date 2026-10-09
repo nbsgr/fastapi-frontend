@@ -1,5 +1,5 @@
-export const BASE_URL = "https://fastapi-backend-liard.vercel.app";
-export const WS_URL = "wss://fastapi-backend-liard.vercel.app";
+export const BASE_URL = "https://fastapi-backend-77r9.vercel.app";
+export const WS_URL = "wss://fastapi-backend-77r9.vercel.app";
 
 // Generic API caller
 export function callApi(reqmethod, url, data, responseHandler, token = null) {
