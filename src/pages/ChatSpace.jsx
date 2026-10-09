@@ -16,6 +16,7 @@ export default function ChatSpace(props) {
   const chatEndRef = useRef(null);
   const socketRef = useRef(null);
   const activeStreamingIndexRef = useRef(null);
+  const pendingPayloadRef = useRef(null);
 
   // =====================================================
   // NDJSON CONTENT PARSER
@@ -148,6 +149,11 @@ export default function ChatSpace(props) {
 
     function handleOpen() {
       console.log("[DEBUG] WebSocket Connected");
+      if (pendingPayloadRef.current) {
+        console.log("[DEBUG] Sending queued pending payload:", pendingPayloadRef.current);
+        socket.send(JSON.stringify(pendingPayloadRef.current));
+        pendingPayloadRef.current = null;
+      }
     }
 
     function handleMessage(event) {
@@ -348,15 +354,17 @@ export default function ChatSpace(props) {
     // =====================================
     // START STREAM VIA WEBSOCKET
     // =====================================
+    const payload = {
+      conversation_id: conversation.id,
+      content: inputText
+    };
+
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
-      socketRef.current.send(
-        JSON.stringify({
-          conversation_id: conversation.id,
-          content: inputText
-        })
-      );
+      console.log("[DEBUG] Sending WS payload directly:", payload);
+      socketRef.current.send(JSON.stringify(payload));
     } else {
-      console.warn("[WS] Socket not open, attempting reconnection...");
+      console.warn("[WS] Socket not open (state: " + (socketRef.current ? socketRef.current.readyState : "null") + "). Queuing message and connecting...");
+      pendingPayloadRef.current = payload;
       connectWebSocket();
     }
   }
