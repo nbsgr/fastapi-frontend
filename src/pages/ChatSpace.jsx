@@ -180,6 +180,11 @@ export default function ChatSpace(props) {
             continue;
           }
 
+          // Ignore server heartbeat pong
+          if (data && data.type === "pong") {
+            continue;
+          }
+
           if (data.error) {
             console.error("[WS ERROR]", data.error);
             setIsStreaming(false);
@@ -237,6 +242,32 @@ export default function ChatSpace(props) {
 
     function handleClose() {
       console.log("[DEBUG] WebSocket Disconnected");
+      setIsStreaming(false);
+      setIsThinking(false);
+
+      if (activeStreamingIndexRef.current !== null) {
+        function finalizeDisconnectedMessage(prevMessages) {
+          let newMessages = [...prevMessages];
+          let index = activeStreamingIndexRef.current;
+          if (newMessages[index]) {
+            newMessages[index] = {
+              ...newMessages[index],
+              streaming: false
+            };
+          }
+          return newMessages;
+        }
+        setMessages(finalizeDisconnectedMessage);
+        activeStreamingIndexRef.current = null;
+      }
+
+      // Automatically reconnect after 2 seconds to keep connection primed
+      setTimeout(function attemptReconnect() {
+        if (!socketRef.current || socketRef.current.readyState === WebSocket.CLOSED) {
+          console.log("[DEBUG] Attempting WebSocket reconnect...");
+          connectWebSocket();
+        }
+      }, 2000);
     }
 
     socket.onopen = handleOpen;
@@ -408,18 +439,27 @@ export default function ChatSpace(props) {
   // LIFECYCLE EFFECTS
   // =====================================================
 
-  // Mount: connect websocket and load messages
+  // Mount: connect websocket, heartbeat and load messages
   useEffect(function mountEffect() {
     connectWebSocket();
     loadMessages();
 
+    // Heartbeat ping every 10 seconds to keep serverless function alive
+    const pingInterval = setInterval(function sendPing() {
+      if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+        socketRef.current.send(JSON.stringify({ type: "ping" }));
+      }
+    }, 10000);
+
     // Cleanup on unmount
     return function cleanup() {
+      clearInterval(pingInterval);
       if (socketRef.current) {
         socketRef.current.close();
       }
     };
   }, []);
+
 
   // Update: when conversation changes, reload messages
   useEffect(function conversationChangeEffect() {
