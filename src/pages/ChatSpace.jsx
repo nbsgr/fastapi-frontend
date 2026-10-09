@@ -439,26 +439,19 @@ export default function ChatSpace(props) {
   // LIFECYCLE EFFECTS
   // =====================================================
 
-  // Mount: connect websocket, heartbeat and load messages
+  // Mount: connect websocket and load messages
   useEffect(function mountEffect() {
     connectWebSocket();
     loadMessages();
 
-    // Heartbeat ping every 10 seconds to keep serverless function alive
-    const pingInterval = setInterval(function sendPing() {
-      if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
-        socketRef.current.send(JSON.stringify({ type: "ping" }));
-      }
-    }, 10000);
-
     // Cleanup on unmount
     return function cleanup() {
-      clearInterval(pingInterval);
       if (socketRef.current) {
         socketRef.current.close();
       }
     };
   }, []);
+
 
 
   // Update: when conversation changes, reload messages
